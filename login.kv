@@ -1,0 +1,79 @@
+
+MDFloatLayout:
+    md_bg_color: 231/255, 231/255, 231/255, 1
+    Image:
+        source: "itty_bitty_kitty.jpg"
+        pos_hint: {"center_x": .5, "y": .4}
+        size_hint: (0.65, 0.65)
+    MDLabel:
+        text: "Welcome!"
+        pos_hint: {"center_x": .5, "center_y": .5}
+        halign: "center"
+        font_name: "kr"
+        font_size: "65sp"
+    MDFloatLayout:
+        size_hint: .85, .08
+        pos_hint: {"center_x": .5, "center_y": .38}
+        canvas:
+            Color:
+                rgba: 245/255, 245/255, 245/255, 0.4
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [25]
+        TextInput:
+            hint_text: "Username"
+            font_name: "kr"
+            font_size: "50"
+            size_hint: 1, None
+            pos_hint: {"center_x": .5, "center_y": .5}
+            height: self.minimum_height
+            multiline: False
+            cursor_color: 233/255, 203/255, 55/255, 1
+            cursor_width: "2sp"
+            foreground_color: 221/255, 133/255, 111/255, 1
+            background_color: 0, 0, 0, 0
+            padding: 15
+    MDFloatLayout:
+        size_hint: .85, .08
+        pos_hint: {"center_x": .5, "center_y": .28}
+        canvas:
+            Color:
+                rgba: 245/255, 245/255, 245/255, 0.4
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [25]
+        TextInput:
+            hint_text: "Password"
+            password: True
+            font_name: "kr"
+            font_size: "50"
+            size_hint: 1, None
+            pos_hint: {"center_x": .5, "center_y": .5}
+            height: self.minimum_height
+            multiline: False
+            cursor_color: 233/255, 203/255, 55/255, 1
+            cursor_width: "2sp"
+            foreground_color: 221/255, 133/255, 111/255, 1
+            background_color: 0, 0, 0, 0
+            padding: 15
+    MDTextButton:
+        text: "Create new account"
+        font_name: "kr"
+        font_size: "40"
+        pos_hint: {"center_x": .5, "center_y": .2}
+    Button:
+        text: "Login"
+        font_name: "kr"
+        font_size: "40"
+        size_hint: .5, .08
+        pos_hint: {"center_x": .5, "center_y": .11}
+        background_color: 0, 0, 0, 0
+        canvas.before:
+            Color:
+                rgb: 221/255, 133/255, 111/255, 1
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [23]
