@@ -1,0 +1,202 @@
+MDFloatLayout:
+    md_bg_color: 231/255, 231/255, 231/255, 1
+    MDLabel:
+        text: "New Habit!"
+        pos_hint: {'center_x': 0.5, 'center_y': 0.95}
+        font_size: "75"
+        halign: "center"
+        font_name: "kr"
+    
+    MDFloatLayout:
+        size_hint: .85, .08
+        pos_hint: {"center_x": 0.5, "center_y": 0.85}
+        canvas:
+            Color:
+                rgba: 245/255, 245/255, 245/255, 0.4
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [25]
+        TextInput:
+            hint_text: "Habit Name"
+            pos_hint : {"center_x":0.5, "center_y":0.5}
+            size_hint: 1, None
+            multiline: False
+            font_name: "kr"
+            font_size: "60"
+            height: self.minimum_height
+            cursor_color: 233/255, 203/255, 55/255, 1
+            cursor_width: "2sp"
+            foreground_color: 221/255, 133/255, 111/255, 1
+            background_color: 0, 0, 0, 0
+            padding: 15
+
+    MDFloatLayout:
+        size_hint: .85, .08
+        pos_hint: {"center_x": 0.5, "center_y": 0.75}
+        canvas:
+            Color:
+                rgba: 245/255, 245/255, 245/255, 0.4
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [25]
+        TextInput:
+            hint_text: "Start Date"
+            pos_hint : {"center_x":0.5, "center_y":0.5}
+            size_hint: 1, None
+            multiline: False
+            font_name: "kr"
+            font_size: "60"
+            height: self.minimum_height
+            cursor_color: 233/255, 203/255, 55/255, 1
+            cursor_width: "2sp"
+            foreground_color: 221/255, 133/255, 111/255, 1
+            background_color: 0, 0, 0, 0
+            padding: 15
+
+    MDFloatLayout:
+        MDLabel:
+            text: "Daily"
+            font_name: "kr"
+            font_size: "40"
+            pos_hint: {"x": 0.1, "center_y": 0.67}
+        MDCheckbox:
+            size_hint: None, None
+            size: "20dp", "20dp"
+            pos_hint: {"x": 0.25, "center_y": 0.67}
+            active: False
+
+    MDFloatLayout:
+        MDLabel:
+            text: "Weekly"
+            font_name: "kr"
+            font_size: "40"
+            pos_hint: {"x": 0.35, "center_y": 0.67}
+        MDCheckbox:
+            size_hint: None, None
+            size: "20dp", "20dp"
+            pos_hint: {"x": 0.55, "center_y": 0.67}
+            active: False
+    
+    MDFloatLayout:
+        MDLabel:
+            text: "Monthly"
+            font_name: "kr"
+            font_size: "40"
+            pos_hint: {"x": 0.65, "center_y": 0.67}
+        MDCheckbox:
+            size_hint: None, None
+            size: "20dp", "20dp"
+            pos_hint: {"x": 0.85, "center_y": 0.67}
+            active: False
+
+    MDFloatLayout:
+        size_hint: .85, .08
+        pos_hint: {"center_x": 0.5, "center_y": 0.55}
+        canvas:
+            Color:
+                rgba: 245/255, 245/255, 245/255, 0.4
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [25]
+        TextInput:
+            hint_text: "Frequency per day"
+            pos_hint : {"center_x":0.5, "center_y":0.5}
+            size_hint: 1, None
+            multiline: False
+            font_name: "kr"
+            font_size: "60"
+            height: self.minimum_height
+            cursor_color: 233/255, 203/255, 55/255, 1
+            cursor_width: "2sp"
+            foreground_color: 221/255, 133/255, 111/255, 1
+            background_color: 0, 0, 0, 0
+            padding: 15
+
+    MDFloatLayout:
+        size_hint: .85, .08
+        pos_hint: {"center_x": 0.5, "center_y": 0.45}
+        canvas:
+            Color:
+                rgba: 245/255, 245/255, 245/255, 0.4
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [25]
+        TextInput:
+            hint_text: "Time Reminder"
+            pos_hint : {"center_x":0.5, "center_y":0.5}
+            size_hint: None, None
+            size: "300dp", "100dp"
+            font_name: "kr"
+            font_size: "60"
+            height: self.minimum_height
+            cursor_color: 233/255, 203/255, 55/255, 1
+            cursor_width: "2sp"
+            foreground_color: 221/255, 133/255, 111/255, 1
+            background_color: 0, 0, 0, 0
+            padding: 15
+
+    MDFloatLayout:
+        MDLabel:
+            text: "AM"
+            font_name: "kr"
+            font_size: "40"
+            pos_hint: {"x": 0.1, "center_y": 0.37}
+        MDCheckbox:
+            size_hint: None, None
+            size: "20dp", "20dp"
+            pos_hint: {"x": 0.25, "center_y": 0.37}
+            active: False
+        
+    MDFloatLayout:
+        MDLabel:
+            text: "PM"
+            font_name: "kr"
+            font_size: "40"
+            pos_hint: {"x": 0.35, "center_y": 0.37}
+        MDCheckbox:
+            size_hint: None, None
+            size: "20dp", "20dp"
+            pos_hint: {"x": 0.45, "center_y": 0.37}
+            active: False
+    
+    MDFloatLayout:
+        size_hint: .85, .08
+        pos_hint: {"center_x": 0.5, "center_y": 0.3}
+        canvas:
+            Color:
+                rgba: 245/255, 245/255, 245/255, 0.4
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [25]
+        TextInput:
+            hint_text: "Notes"
+            pos_hint : {"center_x":0.5, "center_y":0.5}
+            size_hint: None, None
+            size: "300dp", "100dp"
+            font_name: "kr"
+            font_size: "60"
+            height: self.minimum_height
+            cursor_color: 233/255, 203/255, 55/255, 1
+            cursor_width: "2sp"
+            foreground_color: 221/255, 133/255, 111/255, 1
+            background_color: 0, 0, 0, 0
+            padding: 15
+    Button:
+        text: "Submit"
+        font_name: "kr"
+        font_size: "40"
+        size_hint: .5, .08
+        pos_hint: {"center_x": .5, "center_y": .11}
+        background_color: 0, 0, 0, 0
+        canvas.before:
+            Color:
+                rgb: 221/255, 133/255, 111/255, 1
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [23]
