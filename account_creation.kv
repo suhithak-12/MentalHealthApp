@@ -1,20 +1,20 @@
-<LoginPage>:
-    name: "login"
+<accountCreation>:
+    name: "account_creation"
     MDFloatLayout:
         md_bg_color: 231/255, 231/255, 231/255, 1
-        Image:
-            source: "itty_bitty_kitty.jpg"
-            pos_hint: {"center_x": .5, "y": .4}
-            size_hint: (0.65, 0.65)
         MDLabel:
-            text: "Welcome!"
-            pos_hint: {"center_x": .5, "center_y": .5}
+            text: "Create Account"
+            pos_hint: {"center_x": .5, "center_y": .95}
             halign: "center"
             font_name: "kr"
             font_size: "65sp"
+        Image:
+            source: "panda-colorcorrected.png"
+            pos_hint: {"center_x": .5, "y": .4}
+            size_hint: (0.65, 0.65)
         MDFloatLayout:
             size_hint: .85, .08
-            pos_hint: {"center_x": .5, "center_y": .38}
+            pos_hint: {"center_x": .5, "center_y": .50}
             canvas:
                 Color:
                     rgba: 245/255, 245/255, 245/255, 0.4
@@ -38,7 +38,7 @@
                 padding: 15
         MDFloatLayout:
             size_hint: .85, .08
-            pos_hint: {"center_x": .5, "center_y": .28}
+            pos_hint: {"center_x": .5, "center_y": .40}
             canvas:
                 Color:
                     rgba: 245/255, 245/255, 245/255, 0.4
@@ -61,14 +61,39 @@
                 foreground_color: 221/255, 133/255, 111/255, 1
                 background_color: 0, 0, 0, 0
                 padding: 15
+        MDFloatLayout:
+            size_hint: .85, .08
+            pos_hint: {"center_x": .5, "center_y": .30}
+            canvas:
+                Color:
+                    rgba: 245/255, 245/255, 245/255, 0.4
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [25]
+            TextInput:
+                id: email
+                hint_text: "Email"
+                font_name: "kr"
+                font_size: "50"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                cursor_color: 233/255, 203/255, 55/255, 1
+                cursor_width: "2sp"
+                foreground_color: 221/255, 133/255, 111/255, 1
+                background_color: 0, 0, 0, 0
+                padding: 15
+
         MDTextButton:
-            text: "Create new account"
+            text: "Already have Account? Login"
             font_name: "kr"
             font_size: "40"
             pos_hint: {"center_x": .5, "center_y": .2}
-            on_release: app.root.current = "account_creation"
+            on_release: app.root.current = "login"
         Button:
-            text: "Login"
+            text: "Create Account"
             font_name: "kr"
             font_size: "40"
             size_hint: .5, .08
@@ -81,4 +106,4 @@
                     size: self.size
                     pos: self.pos
                     radius: [23]
-            on_press: root.login() #binding button to python function / will call the login function to run it
+            on_press: root.createaccount() #binding button to python function / will call the createaccount function to run it
