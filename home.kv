@@ -1,0 +1,89 @@
+Screen:
+    MDBoxLayout:
+        orientation: "horizontal"
+
+        # Main Content (Left Side)
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: 0.9, 1  # Take 90% of the screen width
+            padding: "20dp"
+            
+            MDLabel:
+                text: "Good morning!"
+                font_style: "H1"
+                font_name: "kr"
+                halign: "center"
+                size_hint_y: None
+                height: self.texture_size[1]  # Adjust height to fit text
+                pos_hint: {"top": 1}  # Push to the top
+
+            Image:
+                source: "itty_bitty_kitty.jpg"
+                pos_hint: {"center_x": .5, "y": .4}
+                size_hint: (0.80, 0.80)
+
+        # Right Navigation Bar (with One Button at the Top)
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: 0.1, 1  # 10% width, full height
+            padding: "10dp"
+            spacing: "20dp"  # Add spacing between button and bottom bar
+
+            canvas.before:
+                Color:
+                    rgb: 221/255, 133/255, 111/255, 1  # Background color of navbar
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            # Single Button at the Top
+            MDRectangleFlatButton:
+                text: "Sleep"
+                size_hint_y: None
+                height: "50dp"  # Adjust height for visibility
+                md_bg_color: 152/255, 251/255, 152/255, 1
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                on_release: app.change_screen("home")
+
+    # Bottom Navigation Bar
+    MDBoxLayout:
+        orientation: "horizontal"
+        size_hint: 1, None  # Full width, fixed height
+        height: "50dp"  # Adjust height of bottom navbar
+        padding: "10dp"
+        spacing: "10dp"
+
+        canvas.before:
+            Color:
+                rgb: 221/255, 133/255, 111/255, 1  # Background color of bottom navbar
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        MDRectangleFlatButton:
+            text: "Sleep"
+            size_hint_x: None
+            width: "100dp"
+            md_bg_color: 152/255, 251/255, 152/255, 1
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            on_release: app.change_screen("home")
+
+        MDRectangleFlatButton:
+            text: "Feed"
+            size_hint_x: None
+            width: "100dp"
+            md_bg_color: 152/255, 251/255, 152/255, 1 
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            on_release: app.change_screen("profile")
+
+        MDRectangleFlatButton:
+            text: "Habit"
+            size_hint_x: None
+            width: "100dp"
+            md_bg_color: 152/255, 251/255, 152/255, 1 
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            on_release: app.change_screen("settings")
