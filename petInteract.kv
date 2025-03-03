@@ -1,0 +1,97 @@
+
+MDFloatLayout:
+    md_bg_color: 231/255, 231/255, 231/255, 1
+    MDLabel:
+        text: "Interact with your pet!"
+        pos_hint: {"center_x": .5, "center_y": .92}
+        halign: "center"
+        font_name: "kr"
+        font_size: "50sp"
+    Button:
+        text: "Mood"
+        font_name: "kr"
+        font_size: "45"
+        size_hint: .7, .08
+        pos_hint: {"center_x": .5, "center_y": .81}
+        background_color: 0, 0, 0, 0
+        canvas.before:
+            Color:
+                rgb: 221/255, 133/255, 111/255, 1
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [23]
+    Button:
+        text: "Shower"
+        font_name: "kr"
+        font_size: "45"
+        size_hint: .7, .08
+        pos_hint: {"center_x": .5, "center_y": .71}
+        background_color: 0, 0, 0, 0
+        canvas.before:
+            Color:
+                rgb: 221/255, 133/255, 111/255, 1
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [23]
+    Button:
+        text: "Water"
+        font_name: "kr"
+        font_size: "45"
+        size_hint: .7, .08
+        pos_hint: {"center_x": .5, "center_y": .61}
+        background_color: 0, 0, 0, 0
+        canvas.before:
+            Color:
+                rgb: 221/255, 133/255, 111/255, 1
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [23]
+    Button:
+        text: "Sleep"
+        font_name: "kr"
+        font_size: "45"
+        size_hint: .7, .08
+        pos_hint: {"center_x": .5, "center_y": .51}
+        background_color: 0, 0, 0, 0
+        canvas.before:
+            Color:
+                rgb: 221/255, 133/255, 111/255, 1
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [23]
+    Button:
+        text: "Meals"
+        font_name: "kr"
+        font_size: "45"
+        size_hint: .7, .08
+        pos_hint: {"center_x": .5, "center_y": .41}
+        background_color: 0, 0, 0, 0
+        canvas.before:
+            Color:
+                rgb: 221/255, 133/255, 111/255, 1
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [23]
+    Button:
+        text: "Custom"
+        font_name: "kr"
+        font_size: "45"
+        size_hint: .7, .08
+        pos_hint: {"center_x": .5, "center_y": .31}
+        background_color: 0, 0, 0, 0
+        canvas.before:
+            Color:
+                rgb: 221/255, 133/255, 111/255, 1
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [23]
+    Image:
+        source: "peng.jpg"
+        pos_hint: {"center_x": .5, "center_y": .15}
+        size_hint: (0.33, 0.33)
