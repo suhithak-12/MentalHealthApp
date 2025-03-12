@@ -21,12 +21,12 @@ class LoginPage(Screen):
 
         try: 
             response = requests.post(url, data=user_data) #sending post request to api endpoint /login
-            response.raise_for_status()
+            #response.raise_for_status()
             response = response.json() #extract the JSON data/will have all data associated with user (username, password, email) rn
 
             print(response)  # Add this to see the response
 
-            if not len(response) == 0: #makes a lil popup dialog if we can't find your login info
+            if len(response) == 0: #makes a lil popup dialog if we can't find your login info
                 #print("login unsuccessful")
                 self.dialog = None
                 self.dialog = MDDialog(

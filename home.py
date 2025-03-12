@@ -11,8 +11,7 @@ from kivy.uix.screenmanager import Screen, ScreenManager
 Window.size = (350, 600)
 
 class HomeScreen(Screen):  # Changed class name to avoid conflict
-    def build(self):
-        return Builder.load_file('home.kv')
+    pass
 
 # Register the custom fonts
 LabelBase.register(name='lemon', fn_regular='LEMONMILK-Regular.otf')
