@@ -63,22 +63,22 @@
                 pos: self.pos
 
         MDRectangleFlatButton:
-            text: "Sleep"
+            text: "Animal Widget"
             size_hint_x: None
             width: "100dp"
             md_bg_color: 152/255, 251/255, 152/255, 1
             theme_text_color: "Custom"
             text_color: 1, 1, 1, 1
-            on_release: app.change_screen("home")
+            on_release: app.root.current = "petInteract"
 
         MDRectangleFlatButton:
-            text: "Feed"
+            text: "Resources"
             size_hint_x: None
             width: "100dp"
             md_bg_color: 152/255, 251/255, 152/255, 1 
             theme_text_color: "Custom"
             text_color: 1, 1, 1, 1
-            on_release: app.change_screen("profile")
+            on_release: app.root.current = "resources"
 
         MDRectangleFlatButton:
             text: "Habit"
@@ -87,4 +87,4 @@
             md_bg_color: 152/255, 251/255, 152/255, 1 
             theme_text_color: "Custom"
             text_color: 1, 1, 1, 1
-            on_release: app.change_screen("settings")
+            on_release: app.root.current = "habit"

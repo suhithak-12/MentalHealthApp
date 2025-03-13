@@ -10,14 +10,11 @@ from kivy.uix.screenmanager import Screen, ScreenManager
 
 Window.size = (350, 600)
 
-class HomeScreen(Screen):  # Changed class name to avoid conflict
+class resourcePage(Screen):  # Changed class name to avoid conflict
     pass
     def switch_screen(self, instance):
         self.dialog.dismiss()
-        self.manager.current = "habit"
-    def switch_screen(self, instance):
-        self.dialog.dismiss()
-        self.manager.current = "resources"
+        self.manager.current = "home"
 
 # Register the custom fonts
 LabelBase.register(name='lemon', fn_regular='LEMONMILK-Regular.otf')

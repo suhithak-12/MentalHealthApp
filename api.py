@@ -29,7 +29,7 @@ def connhelper(): #helper function to establish connection
         host = os.getenv("DB_ENDPOINT"),
         user = os.getenv("DB_USER"),
         password = os.getenv("DB_PASSWORD"),
-        database = 'project-schema' #might hide this in the .env later
+        database=os.getenv("DB_NAME", "project-schema") #might hide this in the .env later
     )
     return dbconn
 

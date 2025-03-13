@@ -1,5 +1,7 @@
-MDFloatLayout:
-    md_bg_color: 231/255, 231/255, 231/255, 1
+<newHabit>:
+    name: "habit"
+    MDFloatLayout:
+        md_bg_color: 231/255, 231/255, 231/255, 1
     MDLabel:
         text: "New Habit!"
         pos_hint: {'center_x': 0.5, 'center_y': 0.95}
@@ -200,3 +202,10 @@ MDFloatLayout:
                 size: self.size
                 pos: self.pos
                 radius: [23]
+                
+    MDRaisedButton:
+        text: "HOME"
+        pos_hint: {"center_x": 0.5, "y": 0.05}
+        size_hint: None, None
+        size: (80, 40)
+        on_release: app.root.current = "home"
