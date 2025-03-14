@@ -1,0 +1,162 @@
+<defPage>:
+    name: "def"
+    font_name: 'kr'
+    MDBoxLayout:
+        orientation: 'vertical'
+        md_bg_color: 231/255, 231/255, 231/255, 1
+
+        MDTopAppBar:
+            title: "TRACK YOUR HABITS!"
+            font_name: "kr"
+            specific_text_color: 0, 0, 0, 1
+            pos_hint: {"top": 1}
+            md_bg_color: 221/255, 133/255, 111/255,1 
+            elevation: 0
+
+        MDLabel:
+            text: "What have you done today?"
+            halign: "center"
+            font_style: "H5"
+            size_hint_y: None
+            height: self.texture_size[1] + 20
+
+        MDBoxLayout:
+            size_hint_y: None
+            height: "80dp"  # Adjust the height of the bottom container
+            orientation: "vertical"
+            pos_hint: {"center_x": 0.5, "bottom": 0}  # Center the layout horizontally and position at the bottom
+            MDFlatButton:
+                text: "Edit Habits!"
+                font_name: "kr"
+                font_size: "38sp"
+                size_hint: None, None
+                size: "200dp", "50dp"  # Adjust the size of the button
+                text_color: 1, 1, 1, 1  # White text
+                pos_hint: {"center_x": 0.5}  # Center the button horizontally
+
+                canvas.before:
+                    Color:
+                        rgba: 221/255, 133/255, 111/255, 1  # Custom color
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [23]  # Rounded edges
+                on_release: app.root.current = "edit"
+        
+
+        MDGridLayout:
+            cols: 2
+            padding: dp(20)
+            spacing: dp(10)
+
+            MDFlatButton:
+                text: "Water Tracker"
+                font_name: "kr"
+                font_size: "40sp"
+                size_hint: None, None
+                size: "150dp", "50dp"
+                text_color: 1, 1, 1, 1  # White text
+
+                canvas.before:
+                    Color:
+                        rgba: 221/255, 133/255, 111/255, 1  # Custom color
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [23]  # Rounded edges
+
+            MDFlatButton:
+                text: "Mood Tracker"
+                font_name: "kr"
+                font_size: "38sp"
+                size_hint: None, None
+                size: "150dp", "50dp"
+                text_color: 1, 1, 1, 1  # White text
+
+                canvas.before:
+                    Color:
+                        rgba: 221/255, 133/255, 111/255, 1  # Custom color
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [23]  # Rounded edges
+                
+
+            MDFlatButton:
+                text: "Shower Tracker"
+                font_name: "kr"
+                font_size: "38sp"
+                size_hint: None, None
+                size: "150dp", "50dp"
+                text_color: 1, 1, 1, 1  # White text
+
+                canvas.before:
+                    Color:
+                        rgba: 221/255, 133/255, 111/255, 1  # Custom color
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [23]  # Rounded edges
+
+            MDFlatButton:
+                text: "Sleep Tracker"
+                font_name: "kr"
+                font_size: "40sp"
+                size_hint: None, None
+                size: "150dp", "50dp"
+                text_color: 1, 1, 1, 1  # White text
+
+                canvas.before:
+                    Color:
+                        rgba: 221/255, 133/255, 111/255, 1  # Custom color
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [23]  # Rounded edges
+
+            MDFlatButton:
+                text: "Meals Tracker"
+                font_name: "kr"
+                font_size: "38sp"
+                size_hint: None, None
+                size: "150dp", "50dp"
+                text_color: 1, 1, 1, 1  # White text
+
+                canvas.before:
+                    Color:
+                        rgba: 221/255, 133/255, 111/255, 1  # Custom color
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [23]  # Rounded edges
+            MDFlatButton:
+                text: "Exercise Tracker"
+                font_name: "kr"
+                font_size: "38sp"
+                size_hint: None, None
+                size: "150dp", "50dp"
+                text_color: 1, 1, 1, 1  # White text
+
+                canvas.before:
+                    Color:
+                        rgba: 221/255, 133/255, 111/255, 1  # Custom color
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [23]  # Rounded edges
+            MDFlatButton:
+                text: "HOME"
+                font_name: "kr"
+                font_size: "38sp"
+                size_hint: None, None
+                size: "150dp", "50dp"
+                text_color: 1, 1, 1, 1  # White text
+
+                canvas.before:
+                    Color:
+                        rgba: 221/255, 133/255, 111/255, 1  # Custom color
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [23]  # Rounded edges
+                on_release: app.root.current = "home"

@@ -3,119 +3,16 @@ from kivy.core.window import Window
 from kivymd.app import MDApp
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDRaisedButton, MDFlatButton
+from kivy.core.text import LabelBase
+from kivy.uix.screenmanager import Screen, ScreenManager
+
+LabelBase.register(name='lemon', fn_regular='LEMONMILK-Regular.otf')
+LabelBase.register(name='kr', fn_regular='Krfontv3-Regular.ttf')
 
 Window.size = (350, 600)
 
-KV = '''
-Screen:
-    MDBoxLayout:
-        orientation: "vertical"
-        padding: dp(20)
-        spacing: dp(10)
-
-        MDTopAppBar:
-            title: "Edit Habits"
-            left_action_items: [["arrow-left", lambda x: app.go_back()]]
-
-        MDTextField:
-            id: habit_name
-            hint_text: "Habit Name"
-
-        MDTextField:
-            id: start_date
-            hint_text: "Start Date"
-
-        MDLabel:
-            text: "Frequency"
-            halign: "left"
-            bold: True
-
-        MDBoxLayout:
-            orientation: "horizontal"
-            spacing: dp(10)
-
-            MDCheckbox:
-                group: "frequency"
-            MDLabel:
-                text: "Daily"
-                size_hint_x: None
-                width: dp(60)
-
-            MDCheckbox:
-                group: "frequency"
-            MDLabel:
-                text: "Weekly"
-                size_hint_x: None
-                width: dp(70)
-
-            MDCheckbox:
-                group: "frequency"
-            MDLabel:
-                text: "Monthly"
-                size_hint_x: None
-                width: dp(80)
-
-        MDBoxLayout:
-            orientation: "horizontal"
-            spacing: dp(10)
-            size_hint_y: None
-            height: self.minimum_height
-
-            MDLabel:
-                text: "Time Reminder"
-                halign: "left"
-                bold: True
-                size_hint_x: 0.4
-
-            MDTextField:
-                id: reminder_time
-                hint_text: "HH:MM"
-                size_hint_x: 0.6
-                input_filter: "int"
-
-        MDBoxLayout:
-            orientation: "horizontal"
-            spacing: dp(10)
-
-            MDCheckbox:
-                group: "reminder"
-            MDLabel:
-                text: "AM"
-                size_hint_x: None
-                width: dp(60)
-
-            MDCheckbox:
-                group: "reminder"
-            MDLabel:
-                text: "PM"
-                size_hint_x: None
-                width: dp(60)
-
-        MDTextField:
-            id: notes
-            hint_text: "Notes"
-            multiline: True
-
-        MDRaisedButton:
-            text: "Submit Changes"
-            pos_hint: {"center_x": 0.5}
-            on_release: app.submit_changes()
-
-        MDFlatButton:
-            text: "[b]DELETE HABIT[/b]"
-            markup: True
-            text_color: 1, 0, 0, 1
-            pos_hint: {"center_x": 0.5}
-            on_release: app.confirm_delete()
-'''
-
-class EditHabitApp(MDApp):
+class EditScreen(Screen):
     dialog = None
-
-    def build(self):
-        self.theme_cls.primary_palette = "Pink"
-        self.theme_cls.primary_hue = "100"  # Lighter shade
-        return Builder.load_string(KV)
 
     def go_back(self):
         print("Going back to the previous screen...")
@@ -148,6 +45,6 @@ class EditHabitApp(MDApp):
 
     def close_dialog(self, *args):
         self.dialog.dismiss()
+    def changescreen(self, *args):
+        self.manager.current = "def"
 
-if __name__ == "__main__":
-    EditHabitApp().run()

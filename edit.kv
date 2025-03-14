@@ -1,0 +1,106 @@
+<EditScreen>
+    name: "edit"
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: dp(20)
+        spacing: dp(10)
+        md_bg_color: 231/255, 231/255, 231/255, 1
+
+        MDTopAppBar:
+            title: "Edit Habits"
+            left_action_items: [["arrow-left", root.changescreen]]
+            elevation: 0
+            md_bg_color: 221/255, 133/255, 111/255, 1
+            
+        MDTextField:
+            id: habit_name
+            hint_text: "Habit Name"
+
+        MDTextField:
+            id: start_date
+            hint_text: "Start Date"
+
+        MDLabel:
+            text: "Frequency"
+            halign: "left"
+            bold: True
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            spacing: dp(10)
+
+            MDCheckbox:
+                group: "frequency"
+            MDLabel:
+                text: "Daily"
+                size_hint_x: None
+                width: dp(60)
+
+            MDCheckbox:
+                group: "frequency"
+            MDLabel:
+                text: "Weekly"
+                size_hint_x: None
+                width: dp(70)
+
+            MDCheckbox:
+                group: "frequency"
+            MDLabel:
+                text: "Monthly"
+                size_hint_x: None
+                width: dp(80)
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            spacing: dp(10)
+            size_hint_y: None
+            height: self.minimum_height
+
+            MDLabel:
+                text: "Time Reminder"
+                halign: "left"
+                bold: True
+                size_hint_x: 0.4
+
+            MDTextField:
+                id: reminder_time
+                hint_text: "HH:MM"
+                size_hint_x: 0.6
+                input_filter: "int"
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            spacing: dp(10)
+
+            MDCheckbox:
+                group: "reminder"
+            MDLabel:
+                text: "AM"
+                size_hint_x: None
+                width: dp(60)
+
+            MDCheckbox:
+                group: "reminder"
+            MDLabel:
+                text: "PM"
+                size_hint_x: None
+                width: dp(60)
+
+        MDTextField:
+            id: notes
+            hint_text: "Notes"
+            multiline: True
+
+        MDRaisedButton:
+            text: "Submit Changes"
+            pos_hint: {"center_x": 0.5}
+            md_bg_color: 221/255, 133/255, 111/255, 1
+            elevation: 0
+            on_release: root.submit_changes()
+
+        MDFlatButton:
+            text: "[b]DELETE HABIT[/b]"
+            markup: True
+            text_color: 1, 0, 0, 1
+            pos_hint: {"center_x": 0.5}
+            on_release: root.confirm_delete()
