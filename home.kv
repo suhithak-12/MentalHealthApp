@@ -14,10 +14,39 @@
                 text: " Welcome!"
                 font_style: "H1"
                 font_name: "kr"
-                halign: "center"
+                halign: "left"
                 size_hint_y: None
                 height: self.texture_size[1]  # Adjust height to fit text
                 pos_hint: {"top": 1}  # Push to the top
+
+            MDCard:
+                size_hint: None, None
+                size: "210dp", "100dp"
+                radius: [25]  # Rounded corners for the card
+                padding: 5
+
+                FloatLayout:
+                    orientation: 'vertical'
+                    padding: 10
+                    spacing: 2 
+
+                    MDLabel:
+                        text: "Animal Health Bar"
+                        theme_text_color: "Secondary"
+                        font_style: "H1"
+                        font_name: "kr"
+                        font_size: "32sp"
+                        halign: "center"  # Center-align the text
+                        pos_hint: {"center_x": 0.5, "center_y": 0.9}
+
+                    MDProgressBar:
+                        value: 60  # Progress bar showing 60% health
+                        max: 100
+                        size_hint_y: None  # To allow for fixed height
+                        height: "10dp"  # Adjust height of the progress bar
+                        pos_hint: {"center_x": 0.5, "center_y": 0.6}  # Center the progress bar horizontally
+                        color: (0, 1, 0, 1)  # Green color for the progress bar
+
 
             MDBoxLayout:
                 orientation: 'vertical'
@@ -27,78 +56,28 @@
                     padding: dp(20)
                 BoxLayout:
                     size_hint_y: None
-                    height: dp(550)  # Adjust height to control positioning
+                    height: dp(450)  # Adjust height to control positioning
                     width: dp(1000)
-                    pos_hint: {"top": 1}  # Moves it up
+                    pos_hint: {"center_x": 0.3, "center_y": 0.7}  # Moves it up
                     AsyncImage:
                         source: "animations/neutralpenguin.gif"
                         anim_delay: 0.1
                         allow_stretch: True
                         keep_ratio: True
+            Button:
+                text: "Interact"
+                font_name: "kr"
+                font_size: "40"
+                size_hint: .5, .08
+                pos_hint: {"center_x": .95, "center_y": .95}
+                background_color: 0, 0, 0, 0
+                canvas.before:
+                    Color:
+                        rgb: 221/255, 133/255, 111/255, 1
+                        RoundedRectangle:
+                            size: self.size
+                            pos: self.pos
+                            radius: [23]
+                on_release: app.root.current = "petInteract"
                       
                        
-
-        # Right Navigation Bar (with One Button at the Top)
-        MDBoxLayout:
-            orientation: "vertical"
-            size_hint: 0.1, 1  # 10% width, full height
-            padding: "10dp"
-            spacing: "20dp"  # Add spacing between button and bottom bar
-
-            canvas.before:
-                Color:
-                    rgb: 231/255, 231/255, 231/255, 1  # Background color of navbar
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
-
-           
-
-    # Bottom Navigation Bar
-    MDBoxLayout:
-        orientation: "horizontal"
-        size_hint: 1, None  # Full width, fixed height
-        height: "50dp"  # Adjust height of bottom navbar
-        padding: "10dp"
-        spacing: "30dp"
-
-        canvas.before:
-            Color:
-                rgb: 231/255, 231/255, 231/255, 1  # Background color of bottom navbar
-            Rectangle:
-                size: self.size
-                pos: self.pos
-
-        MDRectangleFlatButton:
-            text: "Interact"
-            size_hint_x: None
-            width: "150dp"
-            md_bg_color: 221/255, 133/255, 111/255, 1
-            theme_text_color: "Custom"
-            text_color: 1, 1, 1, 1
-            focus: False
-            on_release: app.root.current = "petInteract"
-            
-
-        MDRectangleFlatButton:
-            text: "Resources"
-            size_hint_x: None
-            width: "150dp"
-            md_bg_color: 221/255, 133/255, 111/255, 1 
-            theme_text_color: "Custom"
-            text_color: 1, 1, 1, 1
-            focus: False
-            on_release: app.root.current = "resources"
-
-        MDRectangleFlatButton:
-            text: "New Habit"
-            size_hint_x: None
-            width: "150dp"
-            md_bg_color: 221/255, 133/255, 111/255, 1
-            theme_text_color: "Custom"
-            text_color: 1, 1, 1, 1
-            background_normal: ""  # No background image when idle
-            background_down: ""
-            focus: False
-            elevation: 0
-            on_release: app.root.current = "habit"
