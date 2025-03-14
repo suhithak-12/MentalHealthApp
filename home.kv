@@ -1,6 +1,7 @@
 <HomeScreen>:
     name: "home"
     MDBoxLayout:
+        md_bg_color: 231/255, 231/255, 231/255, 1
         orientation: "horizontal"
 
         # Main Content (Left Side)
@@ -10,7 +11,7 @@
             padding: "20dp"
             
             MDLabel:
-                text: "Good morning!"
+                text: " Welcome!"
                 font_style: "H1"
                 font_name: "kr"
                 halign: "center"
@@ -18,10 +19,24 @@
                 height: self.texture_size[1]  # Adjust height to fit text
                 pos_hint: {"top": 1}  # Push to the top
 
-            Image:
-                source: "itty_bitty_kitty.jpg"
-                pos_hint: {"center_x": .5, "y": .4}
-                size_hint: (0.80, 0.80)
+            MDBoxLayout:
+                orientation: 'vertical'
+                BoxLayout:
+                    orientation: 'vertical'
+                    spacing: dp(80)
+                    padding: dp(20)
+                BoxLayout:
+                    size_hint_y: None
+                    height: dp(550)  # Adjust height to control positioning
+                    width: dp(1000)
+                    pos_hint: {"top": 1}  # Moves it up
+                    AsyncImage:
+                        source: "animations/neutralpenguin.gif"
+                        anim_delay: 0.1
+                        allow_stretch: True
+                        keep_ratio: True
+                      
+                       
 
         # Right Navigation Bar (with One Button at the Top)
         MDBoxLayout:
@@ -32,20 +47,12 @@
 
             canvas.before:
                 Color:
-                    rgb: 221/255, 133/255, 111/255, 1  # Background color of navbar
+                    rgb: 231/255, 231/255, 231/255, 1  # Background color of navbar
                 Rectangle:
                     size: self.size
                     pos: self.pos
 
-            # Single Button at the Top
-            MDRectangleFlatButton:
-                text: "Sleep"
-                size_hint_y: None
-                height: "50dp"  # Adjust height for visibility
-                md_bg_color: 152/255, 251/255, 152/255, 1
-                theme_text_color: "Custom"
-                text_color: 1, 1, 1, 1
-                on_release: app.change_screen("home")
+           
 
     # Bottom Navigation Bar
     MDBoxLayout:
@@ -53,38 +60,45 @@
         size_hint: 1, None  # Full width, fixed height
         height: "50dp"  # Adjust height of bottom navbar
         padding: "10dp"
-        spacing: "10dp"
+        spacing: "30dp"
 
         canvas.before:
             Color:
-                rgb: 221/255, 133/255, 111/255, 1  # Background color of bottom navbar
+                rgb: 231/255, 231/255, 231/255, 1  # Background color of bottom navbar
             Rectangle:
                 size: self.size
                 pos: self.pos
 
         MDRectangleFlatButton:
-            text: "Animal Widget"
+            text: "Interact"
             size_hint_x: None
-            width: "100dp"
-            md_bg_color: 152/255, 251/255, 152/255, 1
+            width: "150dp"
+            md_bg_color: 221/255, 133/255, 111/255, 1
             theme_text_color: "Custom"
             text_color: 1, 1, 1, 1
+            focus: False
             on_release: app.root.current = "petInteract"
+            
 
         MDRectangleFlatButton:
             text: "Resources"
             size_hint_x: None
-            width: "100dp"
-            md_bg_color: 152/255, 251/255, 152/255, 1 
+            width: "150dp"
+            md_bg_color: 221/255, 133/255, 111/255, 1 
             theme_text_color: "Custom"
             text_color: 1, 1, 1, 1
+            focus: False
             on_release: app.root.current = "resources"
 
         MDRectangleFlatButton:
-            text: "Habit"
+            text: "New Habit"
             size_hint_x: None
-            width: "100dp"
-            md_bg_color: 152/255, 251/255, 152/255, 1 
+            width: "150dp"
+            md_bg_color: 221/255, 133/255, 111/255, 1
             theme_text_color: "Custom"
             text_color: 1, 1, 1, 1
+            background_normal: ""  # No background image when idle
+            background_down: ""
+            focus: False
+            elevation: 0
             on_release: app.root.current = "habit"

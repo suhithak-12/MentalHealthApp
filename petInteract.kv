@@ -4,7 +4,7 @@
         md_bg_color: 231/255, 231/255, 231/255, 1
         MDLabel:
             text: "Interact with your pet!"
-            pos_hint: {"center_x": .5, "center_y": .92}
+            pos_hint: {"center_x": .5, "center_y": .96}
             halign: "center"
             font_name: "kr"
             font_size: "50sp"
@@ -13,7 +13,7 @@
             font_name: "kr"
             font_size: "45"
             size_hint: .7, .08
-            pos_hint: {"center_x": .5, "center_y": .81}
+            pos_hint: {"center_x": .5, "center_y": .85}
             background_color: 0, 0, 0, 0
             canvas.before:
                 Color:
@@ -27,7 +27,7 @@
             font_name: "kr"
             font_size: "45"
             size_hint: .7, .08
-            pos_hint: {"center_x": .5, "center_y": .71}
+            pos_hint: {"center_x": .5, "center_y": .76}
             background_color: 0, 0, 0, 0
             canvas.before:
                 Color:
@@ -41,7 +41,7 @@
             font_name: "kr"
             font_size: "45"
             size_hint: .7, .08
-            pos_hint: {"center_x": .5, "center_y": .61}
+            pos_hint: {"center_x": .5, "center_y": .66}
             background_color: 0, 0, 0, 0
             canvas.before:
                 Color:
@@ -55,7 +55,7 @@
             font_name: "kr"
             font_size: "45"
             size_hint: .7, .08
-            pos_hint: {"center_x": .5, "center_y": .51}
+            pos_hint: {"center_x": .5, "center_y": .56}
             background_color: 0, 0, 0, 0
             canvas.before:
                 Color:
@@ -69,7 +69,7 @@
             font_name: "kr"
             font_size: "45"
             size_hint: .7, .08
-            pos_hint: {"center_x": .5, "center_y": .41}
+            pos_hint: {"center_x": .5, "center_y": .46}
             background_color: 0, 0, 0, 0
             canvas.before:
                 Color:
@@ -83,7 +83,7 @@
             font_name: "kr"
             font_size: "45"
             size_hint: .7, .08
-            pos_hint: {"center_x": .5, "center_y": .31}
+            pos_hint: {"center_x": .5, "center_y": .36}
             background_color: 0, 0, 0, 0
             canvas.before:
                 Color:
@@ -94,12 +94,21 @@
                     radius: [23]
         Image:
             source: "peng.jpg"
-            pos_hint: {"center_x": .5, "center_y": .15}
+            pos_hint: {"center_x": .5, "center_y": .21}
             size_hint: (0.33, 0.33)
 
-    MDRaisedButton:
-        text: "HOME"
-        pos_hint: {"center_x": 0.5, "y": 0.05}
-        size_hint: None, None
-        size: (80, 40)
-        on_release: app.root.current = "home"
+        Button:
+            text: "GO HOME"
+            font_name: "kr"
+            font_size: "40"
+            size_hint: .5, .08
+            pos_hint: {"center_x": .5, "center_y": .06}
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgb: 221/255, 133/255, 111/255, 1
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [23]
+            on_release: app.root.current = "home"

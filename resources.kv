@@ -1,5 +1,7 @@
 <resourcePage>:
     name: "resources"
+    MDFloatLayout:
+        md_bg_color: 231/255, 231/255, 231/255, 1
     MDLabel:
         text: "Resource Page!"
         font_style: "H1"
@@ -72,10 +74,20 @@
             font_name: "lemon"
             font_size: "10sp"
             pos_hint: {"x": 0.1, "top": 0.70}
-
-    MDRaisedButton:
-        text: "HOME"
-        pos_hint: {"center_x": 0.5, "y": 0.05}
-        size_hint: None, None
-        size: (80, 40)
+    Button:
+        text: "GO HOME"
+        font_name: "kr"
+        font_size: "40"
+        size_hint: .5, .08
+        pos_hint: {"center_x": .5, "center_y": .1}
+        background_color: 0, 0, 0, 0
+        canvas.before:
+            Color:
+                rgb: 221/255, 133/255, 111/255, 1
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [23]
         on_release: app.root.current = "home"
+
+   

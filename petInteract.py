@@ -12,9 +12,6 @@ Window.size = (350, 600)
 
 class pet_Interact(Screen):  # Changed class name to avoid conflict
     pass
-    def switch_screen(self, instance):
-        self.dialog.dismiss()
-        self.manager.current = "home"
 
 # Register the custom fonts
 LabelBase.register(name='lemon', fn_regular='LEMONMILK-Regular.otf')
