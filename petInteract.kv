@@ -112,3 +112,19 @@
                     pos: self.pos
                     radius: [23]
             on_release: app.root.current = "home"
+
+        Button:
+            text: "NEW"
+            font_name: "kr"
+            font_size: "40"
+            size_hint: .20, .08
+            pos_hint: {"center_x": .8, "center_y": .21}
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgb: 221/255, 133/255, 111/255, 1
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [40]
+            on_release: app.root.current = "habit"
