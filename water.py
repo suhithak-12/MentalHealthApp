@@ -1,123 +1,129 @@
 from kivy.lang import Builder
 from kivy.core.window import Window
 from kivymd.app import MDApp
-from kivymd.uix.button import MDRaisedButton, MDFlatButton
-from kivymd.uix.dialog import MDDialog
+from kivy.core.text import LabelBase
+from kivy.uix.screenmanager import ScreenManager, Screen
+from kivymd.uix.button import MDRaisedButton
+from kivymd.uix.progressbar import MDProgressBar
+from kivy.properties import NumericProperty
+
+LabelBase.register(name='lemon', fn_regular='LEMONMILK-Regular.otf')
+LabelBase.register(name='kr', fn_regular='Krfontv3-Regular.ttf')
 
 Window.size = (350, 600)
 
 KV = '''
 ScreenManager:
-    WaterTrackerScreen:
-    EditGoalsScreen:
+    MainScreen:
+    EditScreen:
 
-<WaterTrackerScreen>:
-    name: 'water_tracker'
+<MainScreen>:
+    name: "main"
+
     MDBoxLayout:
-        orientation: 'vertical'
-        padding: dp(10)
-
-        MDLabel:
-            text: "WATER TRACKER"
-            halign: 'center'
-            bold: True
-            font_style: 'H5'
-
-        MDLabel:
-            text: "Welcome to the water tracker!! You can start this tracker by hitting on the 'Edit' button and setting a goal. Then you're all set! Click the 'water' button every time you drink 1 glass of water!"
-            halign: 'center'
-            size_hint_y: None
-            height: dp(80)
+        orientation: "vertical"
+        md_bg_color: 1, 1, 1, 1
+        padding: dp(20)
+        spacing: dp(20)
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
         Widget:
+            size_hint_y: 0.2
+
+        MDLabel:
+            text: "Welcome to the water tracker!! You can set your goal by clicking 'Edit'.Then you're all set! Click the 'Water' button every time you drink 1 glass!"
+            halign: "center"
+            theme_text_color: "Primary"
+            font_name: "kr"
             size_hint_y: None
-            height: dp(20)
-        
-        MDFloatLayout:
+            height: self.texture_size[1] + dp(20)
+
+        MDProgressBar:
+            id: progress
+            value: 0
+            max: 10
+            size_hint_y: None
+            height: dp(10)
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: dp(48)
+            spacing: dp(10)
+            pos_hint: {"center_x": 0.5}
+
+            MDRaisedButton:
+                text: "-"
+                on_release: root.decrement_water()
+                md_bg_color: 0, 0.5, 1, 1
+                
             MDRaisedButton:
                 text: "WATER BUTTON"
-                pos_hint: {"center_x": 0.5, "center_y": 0.5}
-                on_release: app.increment_water()
+                on_release: root.increment_water()
+                md_bg_color: 0, 0.5, 1, 1
+                font_name: "lemon"
+
+            MDRaisedButton:
+                text: "+"
+                on_release: root.increment_water()
+                md_bg_color: 0, 0.5, 1, 1
 
         MDRaisedButton:
             text: "EDIT"
             pos_hint: {"center_x": 0.5}
-            on_release: app.root.current = 'edit_goals'
+            on_release: root.changescreen()
+            md_bg_color: 0.9, 0.5, 0.4, 1
 
-        MDBoxLayout:
-            size_hint_y: None
-            height: dp(50)
-            spacing: dp(20)
-            padding: dp(20)
-            
-            MDIconButton:
-                icon: 'account'
-            MDIconButton:
-                icon: 'chart-bar'
-            MDIconButton:
-                icon: 'home'
-            MDIconButton:
-                icon: 'equal'
-            MDIconButton:
-                icon: 'account-circle'
+        Widget:
+            size_hint_y: 0.2
 
-<EditGoalsScreen>:
-    name: 'edit_goals'
+<EditScreen>:
+    name: "edit"
     MDBoxLayout:
-        orientation: 'vertical'
-        padding: dp(10)
-        
+        orientation: "vertical"
+        padding: dp(20)
+        spacing: dp(10)
+        md_bg_color: 231/255, 231/255, 231/255, 1
+
         MDTopAppBar:
-            title: "EDIT Goals"
-            left_action_items: [["arrow-left", lambda x: setattr(app.root, 'current', 'water_tracker')]]
-        
-        MDLabel:
-            text: "Set Goal"
-            bold: True
-        
-        MDTextField:
-            hint_text: "Enter number of glasses"
-            input_filter: 'int'
+            title: "Edit Goal"
+            left_action_items: [["arrow-left", root.changescreen]]
+            elevation: 0
+            md_bg_color: 221/255, 133/255, 111/255, 1
 
         MDLabel:
-            text: "Frequency Notifications"
-            bold: True
+            text: "edit page."
+            halign: "center"
 
-        MDBoxLayout:
-            orientation: 'horizontal'
-            spacing: dp(10)
-
-            MDCheckbox:
-                group: "frequency"
-            MDLabel:
-                text: "Hourly"
-            
-            MDCheckbox:
-                group: "frequency"
-            MDLabel:
-                text: "2 Hours"
-            
-            MDCheckbox:
-                group: "frequency"
-            MDLabel:
-                text: "12 Hours"
-        
-        MDTextField:
-            hint_text: "Notes"
-            multiline: True
-        
         MDRaisedButton:
-            text: "Submit Changes"
+            text: "Go Back"
             pos_hint: {"center_x": 0.5}
-            on_release: app.root.current = 'water_tracker'
+            on_release: root.changescreen()
 '''
+
+class MainScreen(Screen):
+    progress_value = NumericProperty(0)
+
+    def increment_water(self):
+        progress_bar = self.ids.progress
+        if progress_bar.value < progress_bar.max:
+            progress_bar.value += 1
+
+    def decrement_water(self):
+        progress_bar = self.ids.progress
+        if progress_bar.value > 0:
+            progress_bar.value -= 1
+
+    def changescreen(self, *args):
+        self.manager.current = "edit"
+
+class EditScreen(Screen):
+    def changescreen(self, *args):
+        self.manager.current = "main"
 
 class WaterTrackerApp(MDApp):
     def build(self):
         return Builder.load_string(KV)
-    
-    def increment_water(self):
-        print("Water button clicked!")
 
 if __name__ == '__main__':
     WaterTrackerApp().run()
