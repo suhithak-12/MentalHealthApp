@@ -95,7 +95,7 @@ ScreenManager:
             text: "edit page."
             halign: "center"
 
-        MDRaisedButton:
+        MDRaisedButton: 
             text: "Go Back"
             pos_hint: {"center_x": 0.5}
             on_release: root.changescreen()
