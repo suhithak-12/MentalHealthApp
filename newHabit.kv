@@ -20,6 +20,7 @@
                 pos: self.pos
                 radius: [25]
         TextInput:
+            id: habitName
             hint_text: "Habit Name"
             pos_hint : {"center_x":0.5, "center_y":0.5}
             size_hint: 1, None
@@ -44,6 +45,7 @@
                 pos: self.pos
                 radius: [25]
         TextInput:
+            id:startDate
             hint_text: "Start Date"
             pos_hint : {"center_x":0.5, "center_y":0.5}
             size_hint: 1, None
@@ -104,6 +106,7 @@
                 pos: self.pos
                 radius: [25]
         TextInput:
+            id:dayFreq
             hint_text: "Frequency per day"
             pos_hint : {"center_x":0.5, "center_y":0.5}
             size_hint: 1, None
@@ -128,6 +131,7 @@
                 pos: self.pos
                 radius: [25]
         TextInput:
+            id: timeRemind
             hint_text: "Time Reminder"
             pos_hint : {"center_x":0.5, "center_y":0.5}
             size_hint: None, None
@@ -176,6 +180,7 @@
                 pos: self.pos
                 radius: [25]
         TextInput:
+            id: Notes
             hint_text: "Notes"
             pos_hint : {"center_x":0.5, "center_y":0.5}
             size_hint: None, None
@@ -202,6 +207,7 @@
                 size: self.size
                 pos: self.pos
                 radius: [23]
+        on_release: root.createHabit()
     Button:
         text: "GO HOME"
         font_name: "kr"
