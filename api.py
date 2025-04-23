@@ -66,6 +66,35 @@ def accountcreate():
         return "Did not Insert"
     return "Creation Successful"
 
+@app.route("/newHabit", methods = ["POST"])
+def createHabit():
+    username = request.form.get('username')
+    habitName = request.form.get('habitname')
+    startDate = request.form.get('startDate')
+    dayFreq = request.form.get('dayFreq')
+    timeRemind = request.form.get('timeRemind')
+    Notes = request.form.get('Notes')
+    cmd = """ INSERT INTO all_habits 
+        (userName, habitName, startDate, dayFreq, timeRemind, Notes) 
+        VALUES (%s, %s, %s, %s, %s, %s)"""
+            
+    data = (username, habitName, startDate, dayFreq, timeRemind, Notes)
+    dbconn = connhelper()
+    c = dbconn.cursor()
+    try:
+        c.execute("""CREATE TABLE if not exists all_habits (
+                    userName VARCHAR(255),
+                    habitName VARCHAR(255),
+                    startDate VARCHAR(50),
+                    dayFreq VARCHAR(15),
+                    timeRemind VARCHAR(15),
+                    Notes VARCHAR(10000)
+                    )""")
+        c.execute(cmd, data)
+        dbconn.commit()
+    except:
+        return "Did Not Create New Habit"
+    return "New Habit Created!"
+
 if __name__=='__main__':
     app.run(debug=True)
-
