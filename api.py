@@ -1,6 +1,7 @@
 import os
+
 from dotenv import load_dotenv, dotenv_values
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, session
 import mysql.connector
 
 """ Notes: 
@@ -68,26 +69,28 @@ def accountcreate():
 
 @app.route("/newHabit", methods = ["POST"])
 def createHabit():
-    username = request.form.get('username')
+    iduser = session.get('iduser') #grab userid from MySQL
     habitName = request.form.get('habitname')
     startDate = request.form.get('startDate')
-    dayFreq = request.form.get('dayFreq')
+    frequency = request.form.get('frequency') #dropdown menu
     timeRemind = request.form.get('timeRemind')
+    AmPm = request.form.get('AmPm') #dropdown menu
     Notes = request.form.get('Notes')
     cmd = """ INSERT INTO all_habits 
-        (userName, habitName, startDate, dayFreq, timeRemind, Notes) 
+        (iduser, habitName, startDate, dayFreq, timeRemind, Notes) 
         VALUES (%s, %s, %s, %s, %s, %s)"""
             
-    data = (username, habitName, startDate, dayFreq, timeRemind, Notes)
+    data = (iduser, habitName, startDate, frequency, timeRemind, AmPm, Notes)
     dbconn = connhelper()
     c = dbconn.cursor()
     try:
         c.execute("""CREATE TABLE if not exists all_habits (
-                    userName VARCHAR(255),
+                    iduser VARCHAR(255),
                     habitName VARCHAR(255),
                     startDate VARCHAR(50),
-                    dayFreq VARCHAR(15),
+                    frequency VARCHAR(15),
                     timeRemind VARCHAR(15),
+                    AmPm VARCHAR(15),
                     Notes VARCHAR(10000)
                     )""")
         c.execute(cmd, data)
